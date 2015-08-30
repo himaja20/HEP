@@ -94,7 +94,9 @@
           <front>
             <div type="headnote">
                 <note>
-                   <xsl:copy-of select="//p" />
+                   <p>
+                   <xsl:value-of select="p" />
+                   </p>
                 </note>
             </div>
           </front>
@@ -103,14 +105,18 @@
     </xsl:template>
     
     <xsl:template match="docBody">
-      <xsl:element name="body">
+      <body>         
          <xsl:attribute name="id">
              <xsl:value-of select="//doc/@type" />
          </xsl:attribute>
-         <xsl:copy>
-            <xsl:copy-of select="//docBody" />
-        </xsl:copy>
-      </xsl:element>
+         <xsl:copy-of select="//docBody" />
+     </body>
     </xsl:template>
 
+    <xsl:template match="unclear">
+        <xsl:attribute name = "resp">
+           "MSPP"
+        </xsl:attribute>
+    </xsl:template>
+         
 </xsl:stylesheet>
